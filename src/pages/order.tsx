@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Order = () => {
     const submitHandler = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, price: number) => {
         e.preventDefault();
-        const res = await fetch("http://kaikei.otkrickey.com/", {
+        const res = await fetch("http://kaikei.otkrickey.com/api/order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -30,7 +30,13 @@ function MongoDbDataAccess({ name }: { name: string; }) {
     };
 
     const buttonColor = (price: number) => {
-        if (price == 300) {
+        if (price == 100) {
+            return "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded";
+        }
+        else if (price == 200) {
+            return "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded";
+        }
+        else if (price == 300) {
             return "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
         }
         else if (price == 500) {
@@ -121,7 +127,7 @@ function MongoDbDataAccess({ name }: { name: string; }) {
             <table className="min-w-full table-auto border-collapse bg-white shadow-md">
                 <thead className="bg-gray-100">
                     <tr>
-                        <th className="px-4 py-2 border">Clerk</th>
+                        {/* <th className="px-4 py-2 border">Clerk</th> */}
                         <th className="px-4 py-2 border">Date</th>
                         <th className="px-4 py-2 border">Price</th>
                         <th className="px-4 py-2 border">Controls</th>
@@ -130,7 +136,7 @@ function MongoDbDataAccess({ name }: { name: string; }) {
                 <tbody>
                     {orders.map((order: Order, index: number) => (
                         <tr key={order._id} className="border-t">
-                            <td className="px-4 py-2 border">{order.clerk}</td>
+                            {/* <td className="px-4 py-2 border">{order.clerk}</td> */}
                             <td className="px-4 py-2 border">{formatDate(order.date)}</td>
                             <td className="px-4 py-2 border">{order.price}</td>
                             <td className="px-4 py-2 border">

@@ -1,9 +1,10 @@
 import { Inter } from 'next/font/google';
 import { useState, useEffect } from 'react';
-import Order from '@/pages/order';
-import OrderLog from '@/pages/orderLog';
-import { useApp } from '@/components/useApp';
 import * as Realm from 'realm-web';
+import Nav from '@/components/nav';
+import Order from '@/components/order';
+import OrderLog from '@/components/orderLog';
+import { useApp } from '@/components/useApp';
 
 // 販売個数をカウントするアプリ
 // MONGODBに登録する
@@ -31,6 +32,7 @@ export default function Home() {
 
   return (
     <main className={`flex flex-col items-center justify-center min-h-screen py-2 ${inter.className}`}>
+      <Nav />
       <Order />
       <OrderLog />
     </main>

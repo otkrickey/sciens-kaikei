@@ -108,6 +108,13 @@ function MongoDbDataAccess({ name }: { name: string; }) {
                     if (change.operationType === 'insert' && change.fullDocument) {
                         setOrders((prevOrders: any) => [change.fullDocument, ...prevOrders.slice(0, 19)]);
                     }
+                    if (change.operationType === 'delete') {
+                        const recentOrders = await collection.find({}, {
+                            sort: { _id: -1 },
+                            limit: 20
+                        });
+                        setOrders(recentOrders);
+                    }
                 }
             } catch (error) {
                 console.error("Failed to fetch and watch orders:", error);

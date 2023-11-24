@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useApp } from "../components/useApp";
+import { useApp } from "@/components/useApp";
 import * as Realm from "realm-web";
 import Order from "./order";
 
@@ -63,7 +63,7 @@ function MongoDbDataAccess({ name }: { name: string; }) {
             }
 
             const mongodb = app.currentUser.mongoClient('mongodb-atlas');
-            const collection = mongodb.db('test').collection('orders');
+            const collection = mongodb.db('sat').collection('orders');
 
             const result = await collection.deleteOne({ _id: id });
 
@@ -93,7 +93,7 @@ function MongoDbDataAccess({ name }: { name: string; }) {
                 }
 
                 const mongodb = app.currentUser.mongoClient('mongodb-atlas');
-                const collection = mongodb.db('test').collection('orders');
+                const collection = mongodb.db('sat').collection('orders');
 
                 // 最初に最新の20件のオーダーを取得
                 const recentOrders = await collection.find({}, {

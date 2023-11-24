@@ -1,26 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
+import { useApp } from "@/components/useApp";
+import * as Realm from "realm-web";
 
 const Order = () => {
     const submitHandler = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, price: number) => {
         e.preventDefault();
-        const res = await fetch("http://kaikei.otkrickey.com/api/order", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
+        await createOrder(price);
+    };
+
+    const { app, isLoading } = useApp();
+
+    const createOrder = async (price: number) => {
+        if (!app || isLoading) {
+            console.log("App is not initialized or loading.");
+            return;
+        }
+
+        try {
+            const credentials = Realm.Credentials.anonymous();
+            await app.logIn(credentials);
+
+            if (!app.currentUser) {
+                console.error("Failed to log in.");
+                return;
+            }
+
+            const mongoClient = app.currentUser.mongoClient("mongodb-atlas");
+            const orders = mongoClient.db("sat").collection("orders");
+
+            const result = await orders.insertOne({
                 date: new Date(),
                 clerk: "test",
                 price: price,
-            }),
-        });
+            });
 
-        //api側のレスポンスを受け取る
-        const data = await res.json();
-        if (data.success) {
-            console.log("Success:Order");
-        } else {
-            console.log("Failure:Order");
+            console.log(result);
+        } catch (err) {
+            console.error("Failed to insert order", err);
         }
     };
 

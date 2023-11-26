@@ -15,12 +15,12 @@ const StatsPage: React.FC = () => {
                     className="bg-white border-none rounded-md shadow-md mb-4"
                     // style={{ transform: "scale(0.6)" }}
                     width="640" height="480"
-                    src="https://charts.mongodb.com/charts-saiens-tqbhl/embed/charts?id=99068e19-fe35-497f-9a84-99bcb95f31e4&maxDataAge=300&theme=light&autoRefresh=true"></iframe>
+                    src="https://charts.mongodb.com/charts-saiens-tqbhl/embed/charts?id=c458631b-7518-49a8-a556-77013710407c&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
                 <iframe
                     className="bg-white border-none rounded-md shadow-md mb-4"
                     // style={{ transform: "scale(0.6)" }}
                     width="640" height="480"
-                    src="https://charts.mongodb.com/charts-saiens-tqbhl/embed/charts?id=959ece19-663a-4045-81d6-595d0b2b8a69&maxDataAge=600&theme=light&autoRefresh=true"></iframe>
+                    src="https://charts.mongodb.com/charts-saiens-tqbhl/embed/charts?id=c22c9f86-407d-4c56-835a-7eac8139812e&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
             </div>
         </main>
     );

@@ -65,7 +65,7 @@ function MongoDbDataAccess({ name }: { name: string; }) {
             }
 
             const mongodb = app.currentUser.mongoClient('mongodb-atlas');
-            const collection = mongodb.db('sat').collection('orders');
+            const collection = mongodb.db('public').collection('orders');
 
             const result = await collection.deleteOne({ _id: id });
 
@@ -95,7 +95,7 @@ function MongoDbDataAccess({ name }: { name: string; }) {
                 }
 
                 const mongodb = app.currentUser.mongoClient('mongodb-atlas');
-                const collection = mongodb.db('sat').collection('orders');
+                const collection = mongodb.db('public').collection('orders');
 
                 // 最初に最新の20件のオーダーを取得
                 const recentOrders = await collection.find({}, {

@@ -26,7 +26,7 @@ const Order = () => {
             }
 
             const mongoClient = app.currentUser.mongoClient("mongodb-atlas");
-            const orders = mongoClient.db("sat").collection("orders");
+            const orders = mongoClient.db("public").collection("orders");
 
             const result = await orders.insertOne({
                 date: new Date(),
